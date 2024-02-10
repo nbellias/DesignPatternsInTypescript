@@ -44,26 +44,26 @@ sharedResource.connectToMessageQueue();
 const mongo = sharedResource.connectToMongoDb(
   "mongodb://nikolaos:password@localhost:27017",
 );
-// async function main() {
-//   // Use connect method to connect to the server
+async function mongof() {
+  // Use connect method to connect to the server
 
-//   await mongo.connect();
-//   const db = mongo.db(config_mongodb);
-//   const collection = db.collection(cachedValueMongoCollection);
-//   const insertResult = await collection.insertMany([
-//     { a: 1 },
-//     { a: 2 },
-//     { a: 3 },
-//   ]);
-//   console.log("Inserted documents =>", insertResult);
+  await mongo.connect();
+  const db = mongo.db(config_mongodb);
+  const collection = db.collection(cachedValueMongoCollection);
+  const insertResult = await collection.insertMany([
+    { a: 1 },
+    { a: 2 },
+    { a: 3 },
+  ]);
+  console.log("Inserted documents =>", insertResult);
 
-//   return "done.";
-// }
+  return "done.";
+}
 
-// main()
-//   .then(console.log)
-//   .catch(console.error)
-//   .finally(() => mongo.close());
+mongof()
+  .then(console.log)
+  .catch(console.error)
+  .finally(() => mongo.close());
 
 const rabbit = new Connection("amqp://nikolaos:password@localhost:5672/galaxy");
 async function rabbitmqf() {
