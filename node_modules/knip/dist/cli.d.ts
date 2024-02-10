@@ -1,1 +1,0 @@
-import './util/register.js';
