@@ -60,11 +60,6 @@ async function mongof() {
   return "done.";
 }
 
-mongof()
-  .then(console.log)
-  .catch(console.error)
-  .finally(() => mongo.close());
-
 const rabbit = new Connection("amqp://nikolaos:password@localhost:5672/galaxy");
 async function rabbitmqf() {
   // Initialize:
@@ -136,7 +131,14 @@ async function rabbitmqf() {
   process.on("SIGTERM", onShutdown);
 }
 
-rabbitmqf()
-  .then(console.log)
-  .catch(console.error)
-  .finally(() => rabbit.close());
+export default function singletonsf() {
+  mongof()
+    .then(console.log)
+    .catch(console.error)
+    .finally(() => mongo.close());
+
+  rabbitmqf()
+    .then(console.log)
+    .catch(console.error)
+    .finally(() => rabbit.close());
+}
