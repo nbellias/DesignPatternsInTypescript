@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 interface Builder {
   setPartA(): void;
   setPartB(): void;
@@ -17,48 +16,48 @@ class StringProduct {
   }
 }
 
-class BuilderMechanism implements Builder {
-  private productToBuild!: StringProduct;
+export class StringProductBuilderMechanism implements Builder {
+  private stringProductToBuild!: StringProduct;
 
   constructor() {
     this.reset();
   }
 
   public reset(): void {
-    this.productToBuild = new StringProduct();
+    this.stringProductToBuild = new StringProduct();
   }
 
   public setPartA(): void {
-    this.productToBuild.addPart("PartA1");
+    this.stringProductToBuild.addPart("PartA1");
   }
 
   public setPartB(): void {
-    this.productToBuild.addPart("PartB1");
+    this.stringProductToBuild.addPart("PartB1");
   }
 
   public setPartC(): void {
-    this.productToBuild.addPart("PartC1");
+    this.stringProductToBuild.addPart("PartC1");
   }
 
   public getProduct(): StringProduct {
-    const result = this.productToBuild;
+    const result = this.stringProductToBuild;
     this.reset();
     return result;
   }
 }
 
-class Director {
+export class Director {
   private builder!: Builder;
 
   public setBuilder(builder: Builder): void {
     this.builder = builder;
   }
 
-  public buildMinimalViableProduct(): void {
+  public buildMinimalViableStringProduct(): void {
     this.builder.setPartA();
   }
 
-  public buildFullFeaturedProduct(): void {
+  public buildFullFeaturedStringProduct(): void {
     this.builder.setPartA();
     this.builder.setPartB();
     this.builder.setPartC();

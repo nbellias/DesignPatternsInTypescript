@@ -1,5 +1,7 @@
-import prototypesf from "./Creational/Prototype";
+// import prototypesf from "./Creational/Prototype";
 // import singletonsf from "./Creational/Singleton";
+import { builderf } from "./Creational/Builder";
 
 // singletonsf();
-prototypesf();
+// prototypesf();
+builderf();
